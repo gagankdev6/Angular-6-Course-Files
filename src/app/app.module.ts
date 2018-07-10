@@ -120,6 +120,7 @@ const routes: Routes = [
   })
   ],
   providers: [
+    UserInfoService,
     AuthGuard,
     AuthGuardService
   ],
