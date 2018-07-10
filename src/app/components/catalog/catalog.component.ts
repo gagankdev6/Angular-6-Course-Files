@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Renderer2, ViewChild, ElementRef } from '@angular/core';
-import { ShirtGenderPipe } from '../../filters/shirt-filter';
+import { ShirtGenderPipe } from '../../filters/shirt-filter.pipe';
 import { Shirt } from '../../shared/shirt';
 import { ShirtService } from '../../core/shirt.service';
 import { Subscription } from 'rxjs/Subscription';
