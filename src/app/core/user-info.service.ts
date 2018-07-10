@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import {UserInfo} from '../shared/user-info';
-//import {Http, Response} from '@angular/http';
 import {HttpModule, Http, URLSearchParams, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-//import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class UserInfoService {
  _baseUrl = 'http://localhost:3000';
