@@ -41,8 +41,6 @@ import { HttpModule, Http } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BackgroundChangeDirective } from './customDirectives/background-change.directive';
 import { StructuralUnlessDirective } from './customDirectives/structural-unless.directive';
-import { AuthGuard } from './core/auth.guard';
-import { AuthGuardService } from './core/auth-guard.service';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 // AoT requires an exported function for factories
@@ -56,16 +54,14 @@ const routes: Routes = [
   { path: 'signup', component: SignupUserInfoComponent },
   {
     path: 'allStyleOptions',
-    loadChildren: 'app/style-gallery/style-gallery.module#StyleGalleryModule',
-    canLoad: [ AuthGuardService ]
+    loadChildren: 'app/style-gallery/style-gallery.module#StyleGalleryModule'
   },
   {
     path: 'tshirtsDatabase',
     loadChildren: 'app/tshirts-database/tshirts-database.module#TShirtsDatabaseModule',
   },
   {
-    path: 'catalog', component: CatalogComponent,
-    canActivate: [AuthGuard]
+    path: 'catalog', component: CatalogComponent
   },
   { path: '**', component: HomeComponent}
 ];
@@ -120,9 +116,7 @@ const routes: Routes = [
   })
   ],
   providers: [
-    UserInfoService,
-    AuthGuard,
-    AuthGuardService
+    UserInfoService
   ],
   bootstrap: [AppComponent]
 })
