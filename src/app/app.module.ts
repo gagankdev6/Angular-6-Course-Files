@@ -44,6 +44,7 @@ import { StructuralUnlessDirective } from './customDirectives/structural-unless.
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AuthGuard } from './core/auth.guard';
+import { AuthGuardService } from './core/auth-guard.service';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupUserInfoComponent },
   {
     path: 'allStyleOptions',
-    loadChildren: 'app/style-gallery/style-gallery.module#StyleGalleryModule'
+    loadChildren: 'app/style-gallery/style-gallery.module#StyleGalleryModule',
+    canLoad: [ AuthGuardService ]
   },
   {
     path: 'tshirtsDatabase',
@@ -118,7 +120,8 @@ const routes: Routes = [
   ],
   providers: [
     UserInfoService,
-    AuthGuard
+    AuthGuard,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
