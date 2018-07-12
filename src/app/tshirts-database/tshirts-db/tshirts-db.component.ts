@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpModule, Http, URLSearchParams, Headers, RequestOptions} from '@angular/http';
 
 @Component({
   selector: 'app-tshirts-db',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tshirts-db.component.css']
 })
 export class TshirtsDbComponent implements OnInit {
+  apiRoot = 'http://localhost:4000/tshirts';
+  results;
 
-  constructor() { }
+  constructor(private http: Http) { }
+
 
   ngOnInit() {
+  }
+  doGETAll() {
+    console.log('GET ALL');
+    const url = `${this.apiRoot}`;
+    this.http.get(url).subscribe(res => {
+      console.log(res.json());
+      this.results = res.json();
+    });
   }
 
 }
