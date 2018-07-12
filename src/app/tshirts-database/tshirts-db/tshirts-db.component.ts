@@ -23,5 +23,16 @@ export class TshirtsDbComponent implements OnInit {
       this.results = res.json();
     });
   }
+  doGET() {
+    console.log('GET');
+    const url = `${this.apiRoot}`;
+    const search = new URLSearchParams();
+    search.set('name', 'Happy Shirt');
+    this.http.get(url, {search}).subscribe(res => {
+      console.log(res.json());
+      this.results = res.json();
+    });
+  }
+
 
 }
