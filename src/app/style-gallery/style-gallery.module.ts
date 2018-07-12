@@ -8,12 +8,14 @@ import { GraphicComponent } from './graphic/graphic.component';
 import { UserInfoService } from '../core/user-info.service';
 import { AuthchildrenGuard } from './core/authchildren.guard';
 import { CanDeactivateGuard } from './core/can-deactivate.guard';
+import { UsernameResolver } from './core/user-name-resolver';
 const routes: Routes = [
   {
     path: '',
     component: AllStyleOptionsComponent,
     canActivateChild: [AuthchildrenGuard],
     canDeactivate: [CanDeactivateGuard],
+    resolve: { message: UsernameResolver },
     children: [
       {path: 'allGraphics', component: AllGraphicsComponent,
       children: [
@@ -37,7 +39,8 @@ const routes: Routes = [
   providers: [
     UserInfoService,
     CanDeactivateGuard,
-    AuthchildrenGuard
+    AuthchildrenGuard,
+    UsernameResolver
   ],
 })
 export class StyleGalleryModule { }
